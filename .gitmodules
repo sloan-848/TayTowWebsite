@@ -1,6 +1,6 @@
-[submodule "Hacker-Typer"]
-	path = codes/
+[submodule "codes"]
+	path = codes
 	url = https://github.com/sloan-848/Hacker-Typer.git
-[submodule "PapaParse"]
-	path = papaParse/
+[submodule "papaParse"]
+	path = papaParse
 	url = https://github.com/mholt/PapaParse.git
