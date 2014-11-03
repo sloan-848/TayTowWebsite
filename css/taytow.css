@@ -1,0 +1,7 @@
+.text-vertical-center{
+    vertical-align: middle;
+    padding-top: 5%;
+}
+.noUnderline:hover {
+    text-decoration: none;
+}
