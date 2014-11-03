@@ -2,5 +2,5 @@
 	path = codes/
 	url = https://github.com/sloan-848/Hacker-Typer.git
 [submodule "PapaParse"]
-	path = PapaParse
+	path = papaParse/
 	url = https://github.com/mholt/PapaParse.git
