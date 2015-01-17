@@ -44,32 +44,7 @@
             <a class="navbar-brand" href="index.html">Taylor Tower</a>
         </div>
 
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <li class="active" ><a href="#">Events</a></li>
-            <li><a href="photos.html">Photos</a></li>
-            <li><a href="movieList.html">Movie List</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exec Board<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="committees.html#president">President</a></li>
-                    <li><a href="committees.html#treasurer">Treasurer</a></li>
-                    <li><a href="committees.html#vice">Vice President</a></li>
-                    <li><a href="committees.html#webmaster">Webmaster</a></li>
-                    <li><a href="committees.html#special">Special Events</a></li>
-                    <li><a href="committees.html#community">Community Service</a></li>
-                    <li><a href="committees.html#recreation">Recreation</a></li>
-                    <li><a href="committees.html#sustainability">Sustainability</a></li>
-                    <li><a href="committees.html#senator">RHAC Senator</a></li>
-                    <li><a href="committees.html#public">Public Relations</a></li>
-                    <li><a href="committees.html#diversity">Diversity</a></li>
-                    <li><a href="committees.html#blackrep">BSA Representative</a></li>
-                    <li><a href="committees.html#ra">RA Representative</a></li>
-                </ul>
-            </li>
-            <li><a href="minutes.html">Meeting Minutes</a></li>
-          </ul>
+        <div id="navbarGen" class="collapse navbar-collapse">
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -93,12 +68,16 @@
         </footer>
     </div> <!-- /container -->
 
-<!-- Le javascript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="js/bootstrap.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/header.js"></script>
+    <script>
+      fillHeader("events");
+    </script>
 
-</body>
+  </body>
 </html>

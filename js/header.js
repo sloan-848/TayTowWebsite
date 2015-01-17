@@ -1,143 +1,108 @@
+/*
+  * To Title Case 2.1 – http://individed.com/code/to-title-case/
+  * Copyright © 2008–2013 David Gouch. Licensed under the MIT License.
+ */
+
+String.prototype.toTitleCase = function(){
+  var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
+
+  return this.replace(/[A-Za-z0-9\u00C0-\u00FF]+[^\s-]*/g, function(match, index, title){
+    if (index > 0 && index + match.length !== title.length &&
+      match.search(smallWords) > -1 && title.charAt(index - 2) !== ":" &&
+      (title.charAt(index + match.length) !== '-' || title.charAt(index - 1) === '-') &&
+      title.charAt(index - 1).search(/[^\s-]/) < 0) {
+      return match.toLowerCase();
+    }
+
+    if (match.substr(1).search(/[A-Z]|\../) > -1) {
+      return match;
+    }
+
+    return match.charAt(0).toUpperCase() + match.substr(1);
+  });
+};
+
 function addLine(destination, source){
 	destination += source + "\n";
 }
-function fillHeader(page){
-	var head = "";
+
+function fillHeader(currentPage){
+  //Set up data
+	var pages = ["index","events","photos","movieList","committees","minutes"];
+  var pageDictionary = {};
+  pageDictionary["index"] = "Home";
+  pageDictionary["events"] = "Events";
+  pageDictionary["photos"] = "Photos";
+  pageDictionary["movieList"] = "Movie List";
+  pageDictionary["committees"] = "Exec Board";
+  pageDictionary["minutes"] = "Meeting Minutes";
+   
   var navbar = $( "#navbarGen" );
   navbar.className = "collapse navbar-collapse";
 
   var nav_ul = document.createElement("UL");
   nav_ul.className = "nav navbar-nav";
-  navbar.appendChild(nav_ul);
-  
-	var pages = ["index","events","photos","movieList","committees","minutes"];
-  for(var i = 0; i < len(pages); i++){
+ 
+  for(var i = 0; i < pages.length; i++){
     var li = document.createElement("LI");
-    li.innerHTML = pages[i];
-    //The page is active
-    if(page == pages[i]){
-      li.className = "active";
-      li.href = "#";
-    } else if (page[i] == "committees"){
+    var anchor = document.createElement("A");
+    //Special Case for committees page
+    if (pages[i] == "committees"){
       li.className = "dropdown";
-      var dropdown = document.createElement("");
-      if (page == "committees"){
-        dropdown.href = "#";
-        dropdown.className = "dropdown-toggle";
-        
+      anchor.href = "#";
+      anchor.className = "dropdown-toggle";
+      anchor.innerHTML = "Exec Board<b class=\"caret\"></b>";
+      anchor.setAttribute('data-toggle', 'dropdown');
 
-      li.innerHTML = '<li class="dropdown"> \
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exec Board<b class="caret"></b></a> \
-                      <ul class="dropdown-menu"> \
-                        <li><a href="committees.html#president">President</a></li> \
-                        <li><a href="committees.html#treasurer">Treasurer</a></li> \
-                        <li><a href="committees.html#vice">Vice President</a></li> \
-                        <li><a href="committees.html#webmaster">Webmaster</a></li> \
-                        <li><a href="committees.html#special">Special Events</a></li> \
-                        <li><a href="committees.html#community">Community Service</a></li> \
-                        <li><a href="committees.html#recreation">Recreation</a></li> \
-                        <li><a href="committees.html#sustainability">Sustainability</a></li> \
-                        <li><a href="committees.html#senator">RHAC Senator</a></li> \
-                        <li><a href="committees.html#public">Public Relations</a></li> \
-                        <li><a href="committees.html#diversity">Diversity</a></li> \
-                        <li><a href="committees.html#blackrep">BSA Representative</a></li> \
-                        <li><a href="committees.html#ra">RA Representative</a></li> \
-                        </ul> \
-                        </li>'
-      
+      var dropdown = document.createElement("UL");
+
+      dropdown.className = "dropdown-menu";
+      var positions = ["president", "treasurer", "vice", "webmaster", "public", "special", "community", "recreation", "sustainability", "diversity", "senator", "blackrep", "ra"];
+      var positionDict = {};
+      positionDict["president"] = "President";
+      positionDict["treasurer"] = "Treasurer";
+      positionDict["vice"] = "Vice President";
+      positionDict["webmaster"] = "Webmaster";
+      positionDict["public"] = "Public Relations";
+      positionDict["special"] = "Special Events";
+      positionDict["community"] = "Community Service";
+      positionDict["recreation"] = "Recreation Manager";
+      positionDict["sustainability"] = "Sustainability Chair";
+      positionDict["diversity"] = "Diversity Chair";
+      positionDict["senator"] = "RHAC Senator";
+      positionDict["blackrep"] = "BSA Representative";
+      positionDict["ra"] = "RA Representative";
+
+      for (var j = 0; j < positions.length; j++){
+        var innerLI = document.createElement("LI");
+        var innerAnchor = document.createElement("A");
+        innerAnchor.innerHTML = positionDict[positions[j]];
+        if (currentPage == "committees") {
+          innerAnchor.href = "#" + positions[j];
+        } else {
+          innerAnchor.href = "committees.html#" + positions[j];
+        }
+        innerLI.appendChild(innerAnchor);
+        dropdown.appendChild(innerLI);
+        console.log(positionDict[positions[j]]);
+      }
+
+      li.appendChild(dropdown);
+
     } else {
-      li.href = pages[i] + ".html";
+      anchor.href = pages[i] + ".html";
+      anchor.innerHTML = pageDictionary[pages[i]];
     }
+
+    //Check active page and modify accordingly
+    if (pages[i] == currentPage) {
+      li.className = "active";
+      anchor.href = "#";
+    }
+
+    //Finish linking
+    li.appendChild(anchor);
     nav_ul.appendChild(li);
   }
-  addLine(head,'<div class="collapse navbar-collapse">');
-
-	if(page == "committees"){
-    addLine(head,'<li class="dropdown">');
-    addLine(head,'<a href="#" class="dropdown-toggle" data-toggle="dropdown">Exec Board<b class="caret"></b></a>');
-		addLine(head,'<ul class="dropdown-menu">');
-   	addLine(head,'<li><a href="committees.html#president">President</a></li>');
-		addLine(head,'<li><a href="committees.html#treasurer">Treasurer</a></li>');
-		addLine(head,'<li><a href="committees.html#vice">Vice President</a></li>');
-		addLine(head,'<li><a href="committees.html#webmaster">Webmaster</a></li>');
-		addLine(head,'<li><a href="committees.html#special">Special Events</a></li>');
-		addLine(head,'<li><a href="committees.html#community">Community Service</a></li>');
-		addLine(head,'<li><a href="committees.html#recreation">Recreation</a></li>');
-    addLine(head,'<li><a href="committees.html#sustainability">Sustainability</a></li>');
-		addLine(head,'<li><a href="committees.html#senator">RHAC Senator</a></li>');
-		addLine(head,'<li><a href="committees.html#public">Public Relations</a></li>');
-		addLine(head,'<li><a href="committees.html#diversity">Diversity</a></li>');
-		addLine(head,'<li><a href="committees.html#blackrep">BSA Representative</a></li>');
-		addLine(head,'<li><a href="committees.html#ra">RA Representative</a></li>');
-		addLine(head,'</ul>');
-		addLine(head,'</li>');
-	} else {
-    addLine(head,'<li class="dropdown">');
-    addLine(head,'<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Exec Board<b class="caret"></b></a>');
-		addLine(head,'<ul class="dropdown-menu">');
-   	addLine(head,'<li><a href="#president">President</a></li>');
-		addLine(head,'<li><a href="#treasurer">Treasurer</a></li>');
-		addLine(head,'<li><a href="#vice">Vice President</a></li>');
-		addLine(head,'<li><a href="#webmaster">Webmaster</a></li>');
-		addLine(head,'<li><a href="#special">Special Events</a></li>');
-		addLine(head,'<li><a href="#community">Community Service</a></li>');
-		addLine(head,'<li><a href="#recreation">Recreation</a></li>');
-    addLine(head,'<li><a href="#sustainability">Sustainability</a></li>');
-		addLine(head,'<li><a href="#senator">RHAC Senator</a></li>');
-		addLine(head,'<li><a href="#public">Public Relations</a></li>');
-		addLine(head,'<li><a href="#diversity">Diversity</a></li>');
-		addLine(head,'<li><a href="#blackrep">BSA Representative</a></li>');
-		addLine(head,'<li><a href="#ra">RA Representative</a></li>');
-		addLine(head,'</ul>');
-		addLine(head,'</li>');
-	}	
-
-	if(page == "minutes"){
-		addLine(head,'<li class="active"><a href="#">Meeting Minutes</a></li>');
-	} else {
-		addLine(head,'<li><a href="minutes.html">Meeting Minutes</a></li>');
-	}
-
-	addLine(head,'</ul>');
-	addLine(head,'</div><!--/.nav-collapse -->');
-	addLine(head,'</div>');
-	addLine(head,'</div>');
-	document.getElementById("navbarGen").innerHTML = head;
-		/*
-			Need to iterate through each page, and check if it is the current page.
-			If it is, make it the active page, and change the href="#"
-
-			Need special case for committees because of dropdown
-			
-		if(currentPage == page){
-			addLine(head,'li class="active"><a href="#">	
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="photos.html">Photos</a></li>
-            <li><a href="movieList.html">Movie List</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Exec Board<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="committees.html#president">President</a></li>
-                    <li><a href="committees.html#treasurer">Treasurer</a></li>
-                    <li><a href="committees.html#vice">Vice President</a></li>
-                    <li><a href="committees.html#webmaster">Webmaster</a></li>
-                    <li><a href="committees.html#special">Special Events</a></li>
-                    <li><a href="committees.html#community">Community Service</a></li>
-                    <li><a href="committees.html#recreation">Recreation</a></li>
-                    <li><a href="committees.html#sustainability">Sustainability</a></li>
-                    <li><a href="committees.html#senator">RHAC Senator</a></li>
-                    <li><a href="committees.html#public">Public Relations</a></li>
-                    <li><a href="committees.html#diversity">Diversity</a></li>
-                    <li><a href="committees.html#blackrep">BSA Representative</a></li>
-                    <li><a href="committees.html#ra">RA Representative</a></li>
-                </ul>
-            </li>
-            <li><a href="minutes.html">Meeting Minutes</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-		*/
-		
+  navbar.append(nav_ul);
 }
