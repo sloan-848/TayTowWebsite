@@ -28,11 +28,10 @@ function addLine(destination, source){
 
 function fillHeader(currentPage){
   //Set up data
-	var pages = ["index","events","photos","movieList","committees","minutes"];
+	var pages = ["index","events","movieList","committees","minutes"];
   var pageDictionary = {};
   pageDictionary["index"] = "Home";
   pageDictionary["events"] = "Events";
-  pageDictionary["photos"] = "Photos";
   pageDictionary["movieList"] = "Movie List";
   pageDictionary["committees"] = "Exec Board";
   pageDictionary["minutes"] = "Meeting Minutes";
