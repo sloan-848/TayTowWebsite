@@ -105,5 +105,6 @@ function fillHeader(currentPage){
 }
 
 function fillFooter(){
-  $( '#footer_content' ).replaceWith('<p>&copy; Will Sloan 2015</p>');
+  var footer_text = '<p>&copy; Will Sloan ' + new Date().getFullYear() + '</p>';
+  $( '#footer_content' ).replaceWith(footer_text);
 }
