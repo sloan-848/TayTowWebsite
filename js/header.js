@@ -82,6 +82,7 @@ function fillHeader(currentPage){
           innerAnchor.href = "committees.html#" + positions[j];
         }
         innerLI.appendChild(innerAnchor);
+        dropdown.appendChild(innerLI);
       }
 
       li.appendChild(dropdown);
