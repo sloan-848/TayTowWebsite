@@ -35,13 +35,13 @@ function fillHeader(currentPage){
   pageDictionary["movieList"] = "Movie List";
   pageDictionary["committees"] = "Exec Board";
   pageDictionary["minutes"] = "Meeting Minutes";
-   
+
   var navbar = $( "#navbarGen" );
   navbar.className = "collapse navbar-collapse";
 
   var nav_ul = document.createElement("UL");
   nav_ul.className = "nav navbar-nav";
- 
+
   for(var i = 0; i < pages.length; i++){
     var li = document.createElement("LI");
     var anchor = document.createElement("A");
@@ -82,8 +82,6 @@ function fillHeader(currentPage){
           innerAnchor.href = "committees.html#" + positions[j];
         }
         innerLI.appendChild(innerAnchor);
-        dropdown.appendChild(innerLI);
-        console.log(positionDict[positions[j]]);
       }
 
       li.appendChild(dropdown);
@@ -104,4 +102,8 @@ function fillHeader(currentPage){
     nav_ul.appendChild(li);
   }
   navbar.append(nav_ul);
+}
+
+function fillFooter(){
+  $( '#footer_content' ).replaceWith('<p>&copy; Will Sloan 2015</p>');
 }
