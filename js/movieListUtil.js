@@ -51,12 +51,12 @@ function movieLookup(title){
    * lookupInfo -> lookupTorrent -> displayPopup
    */
   var lookupTorrent = function(movie_title, movie_info){
-    var lookupUrl = "https://yts.re/api/v2/list_movies.json?query_term=" + encodeURI(movie_title);
+    var lookupUrl = "https://yts.to/api/v2/list_movies.json?query_term=" + encodeURI(movie_title);
     $.getJSON(
         lookupUrl,
         function(data, status, xhr){
-          console.log(movie_info);
-          console.log(data);
+          //console.log(movie_info);
+          //console.log(data);
           showPopup(movie_info, data);
         }
     );
@@ -100,7 +100,7 @@ function showPopup(movie_info, torrent_info){
       confirmButtonText: "Download"
     }, function(){
       window.location.replace(torrentUrl);
-      console.log(torrentUrl);
+      //console.log(torrentUrl);
     });
   }
 }
