@@ -37,7 +37,7 @@
 
 <body>
 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -61,52 +61,67 @@
             <h4 class="modal-title">Vote</h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" method="post" role="form" action="//taylortower.org:3000/api/votes">
+            <form class="form-horizontal" method="post" role="form" action="//taylortower.org/api/votes">
               <div class="form-group">
                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
                   <input type="email" class="form-control" name="email" placeholder="Email">
                 </div>
               </div>
+              <br>
+              <h2> President </h2>
+              <h4> Phil DeGennaro </h4>
+              <p> I am Phil DeGennaro, Current RHAC representative for Taylor Tower hall council, and want to lead TayTow to more great things. </p>
+              <h4> Madison Montgomery </h4>
+              <p> Madison Montgomery knows Taylor Tower from living and working there. She understands what residents want and will help make it a great year! </p>
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">President</label>
                 <div class="col-sm-10">
                   <select class="form-control" name="president">
-                    <option>President 1</option>
-                    <option>President 2</option>
+                    <option>Phil DeGennaro</option>
+                    <option>Madison Montgomery</option>
                   </select>
                 </div>
               </div>
+              <br>
+              <h2> Vice President </h2>
+              <h4> Jacqueline Karl-DeFrain </h4>
+              <p> Look at your VP, now back at me. Sadly, he isn't me, but next fall he could be. Anything is possible with a VP as devoted and eager as me. </p>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Vice President</label>
+                <label for="inputPassword3" class="col-sm-2 control-label"> Vice President</label>
                 <div class="col-sm-10">
                   <select class="form-control" name="vice_president">
-                    <option>Vice President 1</option>
-                    <option>Vice President 2</option>
+                    <option> Jacqueline Karl-DeFrain </option>
                   </select>
                 </div>
               </div>
+              <br>
+              <h2> Treasurer </h2>
+              <h4> Susant Polavarapu </h4>
+              <p> Sush is here, have no fear. Taylor's budget is in safe hands. </p>
               <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">President</label>
+                <label for="inputPassword3" class="col-sm-2 control-label"> Treasurer</label>
                 <div class="col-sm-10">
                   <select class="form-control" name="treasurer">
-                    <option>Treasurer 1</option>
-                    <option>Treasurer 2</option>
+                    <option> Susant Polavarapu </option>
                   </select>
                 </div>
               </div>
+              <br>
+              <h2> Webmaster </h2>
+              <h4> Andrew Pearson </h4>
+              <p> Andrew Pearson, aspiring Computer Science student, should be Taylor Tower's next Webmaster! </p>
               <div class="form-group">
                 <label for="inputPassword3" class="col-sm-2 control-label">President</label>
                 <div class="col-sm-10">
                   <select class="form-control" name="webmaster">
-                    <option>Webmaster 1</option>
-                    <option>Webmaster 2</option>
+                    <option> Andrew Pearson </option>
                   </select>
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default">Submit Vote</button>
+                  <button type="submit" class="btn btn-primary">Submit Vote</button>
                 </div>
               </div>
             </form>
@@ -124,10 +139,12 @@
       <div id="carousel-inner" class="carousel-inner">
 
         <div class="item active">
-          <img src="images/elections.png" alt="Election Poster">
+          <a data-toggle="modal" data-target="#myModal">
+            <img src="images/elections_2.png" alt="Election Poster">
+          </a>
           <div class="container">
             <div class="carousel-caption">
-              <p><a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Vote Here</a></p>
+              <p><a class="btn btn-lg btn-info" data-toggle="modal" data-target="#myModal">Vote Here</a></p>
             </div>
           </div>
         </div>
@@ -179,13 +196,6 @@
 <script>
   fillHeader("index");
   fillFooter();
-  $('#modal').on('show.bs.modal', function () {
-    $(this).find('.modal-body').css({
-      width:'auto', //probably not needed
-      height:'auto', //probably not needed 
-      'max-height':'100%'
-    });
-  });
 </script>
 
 </body>
