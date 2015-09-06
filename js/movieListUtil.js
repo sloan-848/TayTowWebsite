@@ -51,7 +51,7 @@ function movieLookup(title){
    * lookupInfo -> lookupTorrent -> displayPopup
    */
   var lookupTorrent = function(movie_title, movie_info){
-    var lookupUrl = "amazon.com";
+    var lookupUrl = "https://amazon.com";
     $.getJSON(
         lookupUrl,
         function(data, status, xhr){
