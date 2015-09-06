@@ -51,7 +51,7 @@ function movieLookup(title){
    * lookupInfo -> lookupTorrent -> displayPopup
    */
   var lookupTorrent = function(movie_title, movie_info){
-    var lookupUrl = "https://yts.to/api/v2/list_movies.json?query_term=" + encodeURI(movie_title);
+    var lookupUrl = "https://amazon.com";
     $.getJSON(
         lookupUrl,
         function(data, status, xhr){
