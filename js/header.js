@@ -106,6 +106,6 @@ function fillHeader(currentPage){
 }
 
 function fillFooter(){
-  var footer_text = '<p>&copy; Will Sloan ' + new Date().getFullYear() + '</p>';
+  var footer_text = '<p>&copy; Will Sloan ' + new Date().getFullYear() + '<br> <i>Updates by Andrew Pearson</i> </p>';
   $( '#footer_content' ).replaceWith(footer_text);
 }
