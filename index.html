@@ -53,6 +53,83 @@
       </div>
     </div>
 
+    <div class="modal fade clearfix" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content clearfix">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Vote</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" method="post" role="form" action="//taylortower.848.productions/api/votes">
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+              </div>
+              <br>
+              <h2> President </h2>
+              <h4> Phil DeGennaro </h4>
+              <p> I am Phil DeGennaro, Current RHAC representative for Taylor Tower hall council, and want to lead TayTow to more great things. </p>
+              <h4> Madison Montgomery </h4>
+              <p> Madison Montgomery knows Taylor Tower from living and working there. She understands what residents want and will help make it a great year! </p>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">President</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="president">
+                    <option>Phil DeGennaro</option>
+                    <option>Madison Montgomery</option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <h2> Vice President </h2>
+              <h4> Jacqueline Karl-DeFrain </h4>
+              <p> Look at your VP, now back at me. Sadly, he isn't me, but next fall he could be. Anything is possible with a VP as devoted and eager as me. </p>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label"> Vice President</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="vice_president">
+                    <option> Jacqueline Karl-DeFrain </option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <h2> Treasurer </h2>
+              <h4> Susant Polavarapu </h4>
+              <p> Sush is here, have no fear. Taylor's budget is in safe hands. </p>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label"> Treasurer</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="treasurer">
+                    <option> Susant Polavarapu </option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <h2> Webmaster </h2>
+              <h4> Andrew Pearson </h4>
+              <p> Andrew Pearson, aspiring Computer Science student, should be Taylor Tower's next Webmaster! </p>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">President</label>
+                <div class="col-sm-10">
+                  <select class="form-control" name="webmaster">
+                    <option> Andrew Pearson </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit Vote</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
